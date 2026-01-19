@@ -1,0 +1,85 @@
+<% content_for :title, "Products" %>
+
+<div class="page-wrapper">
+  <% if notice.present? %>
+    <div class="alert-success"><%= notice %></div>
+  <% end %>
+
+  <div class="page-header header-fix">
+    <h1 class="page-title">Products</h1>
+
+    <%= link_to "➕ Add Product", new_product_path, class: "btn btn-purple" %>
+  </div>
+
+  <div class="glass-card">
+    <div class="table-top table-top-only">
+      <h2 class="table-title">All Products</h2>
+    </div>
+
+    <table class="admin-table premium-table">
+      <thead>
+        <tr>
+          <th style="width: 220px;">Name</th>
+          <th>Description</th>
+          <th style="width: 120px;">Price</th>
+          <th style="width: 120px;">Stock</th>
+          <th style="width: 140px;">Status</th>
+          <th class="actions-col">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td class="name-cell">
+              <span class="dot dot-gold"></span>
+              <%= product.name %>
+            </td>
+
+            <td class="muted"><%= truncate(product.description, length: 45) %></td>
+
+            <td class="price">₹ <%= product.price %></td>
+
+            <td>
+              <% if product.stock.to_i <= 0 %>
+                <span class="pill pill-danger">Out</span>
+              <% else %>
+                <span class="pill pill-purple"><%= product.stock %></span>
+              <% end %>
+            </td>
+
+            <td>
+              <% if product.is_active %>
+                <span class="status-chip status-green">
+                  <span class="dot dot-green"></span> Active
+                </span>
+              <% else %>
+                <span class="status-chip status-red">
+                  <span class="dot dot-red"></span> Inactive
+                </span>
+              <% end %>
+            </td>
+
+            <td class="actions-col">
+              <div class="actions">
+                <%= link_to "👁", product, class: "icon-btn", title: "Show" %>
+                <%= link_to "✏", edit_product_path(product), class: "icon-btn", title: "Edit" %>
+                <%= link_to "🗑", product,
+                      method: :delete,
+                      data: { confirm: "Are you sure?" },
+                      class: "icon-btn danger",
+                      title: "Delete" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <% if @products.empty? %>
+      <div class="empty-state">
+        No products found. Click <b>Add Product</b> to create one.
+      </div>
+    <% end %>
+  </div>
+</div>

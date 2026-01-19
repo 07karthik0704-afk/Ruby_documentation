@@ -1,0 +1,16 @@
+<% content_for :title, "Edit Customer" %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <h1 class="page-title">Edit Customer</h1>
+
+    <div class="action-buttons">
+      <%= link_to "👁 Show", @customer, class: "btn btn-secondary" %>
+      <%= link_to "⬅ Back", customers_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+
+  <div class="card form-card">
+    <%= render "form", customer: @customer %>
+  </div>
+</div>

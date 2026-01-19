@@ -1,0 +1,29 @@
+1. Model
+Path: app/models/customer.rb
+Purpose:
+• Handles DB logic
+
+2. Migration File
+Path: db/migrate/xxxx_create_customers.rb
+Purpose:
+• Creates table and columns
+
+3. Controller
+Path: app/controllers/customers_controller.rb
+Purpose:
+• Contains CRUD actions:
+  - index, show, new, create, edit, update, destroy
+
+4. Views (HTML pages)
+Path: app/views/customers/
+Files:
+• index.html.erb
+• show.html.erb
+• new.html.erb
+• edit.html.erb
+• _form.html.erb
+
+5. Routes
+File: config/routes.rb
+Example:
+resources :customers

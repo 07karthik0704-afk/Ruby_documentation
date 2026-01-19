@@ -1,0 +1,50 @@
+<% content_for :title, "Customers" %>
+
+<div class="page-wrapper">
+  <% if notice.present? %>
+    <div class="alert-success"><%= notice %></div>
+  <% end %>
+
+  <div class="page-header">
+    <h1 class="page-title">Customers</h1>
+
+    <%= link_to "➕ New Customer", new_customer_path, class: "btn btn-primary" %>
+  </div>
+
+  <div class="card">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th class="actions-col">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @customers.each do |customer| %>
+          <tr>
+            <td><%= customer.name %></td>
+            <td><%= customer.age %></td>
+            <td class="actions-col">
+              <div class="action-buttons">
+                <%= link_to "Show", customer, class: "btn btn-sm btn-secondary" %>
+                <%= link_to "Edit", edit_customer_path(customer), class: "btn btn-sm btn-warning" %>
+                <%= link_to "Delete", customer,
+                      method: :delete,
+                      data: { confirm: "Are you sure?" },
+                      class: "btn btn-sm btn-danger" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <% if @customers.empty? %>
+      <div class="empty-state">
+        No customers found. Click <b>New Customer</b> to add one.
+      </div>
+    <% end %>
+  </div>
+</div>

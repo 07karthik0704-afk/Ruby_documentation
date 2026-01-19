@@ -1,0 +1,226 @@
+/* ---------- Global Theme ---------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #0f172a; /* Dark blue */
+  margin: 0;
+  padding: 0;
+  color: #e2e8f0;
+}
+
+/* Wrapper */
+.page-wrapper {
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+}
+
+/* Header */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.page-title {
+  font-size: 32px;
+  margin: 0;
+  font-weight: bold;
+}
+
+/* Card */
+.card {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* ✅ Table (fixed layout to prevent spacing issue) */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.table th {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #334155;
+  font-size: 16px;
+  color: #93c5fd;
+}
+
+.table td {
+  padding: 12px;
+  border-bottom: 1px solid #334155;
+  overflow: hidden;
+}
+
+/* ✅ Actions column fix */
+.actions-col {
+  width: 250px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: #3b82f6;
+  color: white;
+}
+
+.btn-secondary {
+  background: #64748b;
+  color: white;
+}
+
+.btn-warning {
+  background: #f59e0b;
+  color: white;
+}
+
+.btn-danger {
+  background: #ef4444;
+  color: white;
+}
+
+.btn-sm {
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+/* Alerts */
+.alert-success {
+  background: #16a34a;
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* Empty State */
+.empty-state {
+  padding: 20px;
+  text-align: center;
+  color: #cbd5e1;
+}
+
+/* ✅ Action buttons aligned properly */
+.action-buttons {
+  display: inline-flex;
+  justify-content: flex-end;
+  gap: 10px;
+  align-items: center;
+}
+
+/* ✅ Optional: Make buttons same size */
+.action-buttons .btn {
+  min-width: 70px;
+  text-align: center;
+}
+
+/* ---------- Form UI ---------- */
+.form-card {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #93c5fd;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: #e2e8f0;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+/* Error Box */
+.alert-danger {
+  background: #ef4444;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  color: white;
+}
+/* ---------- Show Page Details UI ---------- */
+.details-card {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid #334155;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-weight: bold;
+  color: #93c5fd;
+}
+
+.detail-value {
+  font-size: 16px;
+  color: #e2e8f0;
+}
+
+.detail-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* button_to creates form, so remove spacing */
+.delete-form {
+  display: inline;
+}
+
