@@ -1,13 +1,5 @@
 <% content_for :title, "Products" %>
-<div>
-  <% Product.limit(10).each do |p| %>
-    <div>
-      <h1><%= p.name %></h1>
-       <h1><%= p.description %></h1>
-       <h1><%= p.price %></h1>
-    </div>
-  <% end %>
-</div>
+
 
 <div class="page-wrapper">
   <% if notice.present? %>
