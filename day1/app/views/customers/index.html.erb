@@ -1,0 +1,24 @@
+
+
+<% content_for :title, "Customers" %>
+
+<div class="header">
+<h1>Customers</h1>
+<h2><%= link_to "New customer", new_customer_path, class:"buttomStyle" %></h2>
+</div>
+
+
+
+<% @customers.each do |customer| %>
+  <div class="one">
+        <h3>Name  : <%= customer.name %></h3>
+        <h3>Email : <%= customer.email %></h3>
+        <h2><%= link_to "View", customer, class:"buttomStyle" %></h2>
+        </div>
+
+<% end %>
+
+    
+
+
+
