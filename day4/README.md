@@ -56,4 +56,6 @@ Range loop example:
 for i in 1..10
   puts "Iteration number: #{i}"
 end
+It will print from 1 to 10
+... will print from 1 to 9
 --------------------------------------------------------
