@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+
+  
+  resources :products do
+    collection do
+      get 'whitelisted_products'
+    end
+  end
+  get "pages/home" 
+
+
   resources :products
   resources :customers
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

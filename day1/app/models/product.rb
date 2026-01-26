@@ -6,7 +6,7 @@ class Product < ApplicationRecord
     #     @price = Product.all.limit(10).pluck(:stock)
     # end
     #------------------------------------
-    validates :description, length: { minimum: 3, maximum: 20 }
+    validates :description, length: { minimum: 3, maximum: 50}
     validates :price, numericality: { greater_than_or_equal_to: 1 }
     validates :name, format: { with: /\A[a-zA-Z0-9 ]+\z/ }
     validates :stock, presence: true, if: :is_active?
@@ -29,6 +29,6 @@ def check_stock_for_active
   end
 end
 
-
-
+scope :out_of_stock, -> { where("stock <= ?", 25) }
+scope :whitelisted_products, -> { where("stock <= ?", 25) }
 end
