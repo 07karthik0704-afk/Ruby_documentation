@@ -2,6 +2,11 @@
 
 <%= render @customer %>
 
+<p>
+  <strong>About me:</strong><br>
+  <%= @customer.about_me %>
+</p>
+
 <div>
   <%= link_to "Edit this customer", edit_customer_path(@customer) %> |
   <%= link_to "Back to customers", customers_path %>

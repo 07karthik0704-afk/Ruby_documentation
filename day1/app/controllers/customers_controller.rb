@@ -8,6 +8,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/1 or /customers/1.json
   def show
+   
   end
 
   # GET /customers/new
@@ -17,6 +18,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/1/edit
   def edit
+     @customer = Customer.find(params[:id])
   end
 
   # POST /customers or /customers.json
@@ -36,6 +38,7 @@ class CustomersController < ApplicationController
 
   # PATCH/PUT /customers/1 or /customers/1.json
   def update
+    @customer = Customer.find(params[:id])
     respond_to do |format|
       if @customer.update(customer_params)
         format.html { redirect_to @customer, notice: "Customer was successfully updated.", status: :see_other }
@@ -60,11 +63,11 @@ class CustomersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
-      @customer = Customer.find(params.expect(:id))
+       @customer = Customer.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def customer_params
-      params.expect(customer: [ :name, :email ])
+      params.expect(customer: [ :name, :email,:about_me ])
     end
 end

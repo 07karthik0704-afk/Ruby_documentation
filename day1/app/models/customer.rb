@@ -1,4 +1,6 @@
 class Customer < ApplicationRecord
+
+  has_rich_text:about_me
     validates :name, presence: true
     validates :email, uniqueness: true
 

@@ -1,6 +1,7 @@
 body {
   background-color: #0f172a;   
-  color: #c7d2fe;              
+  color: #c7d2fe; 
+               
 }
 
 .one {
@@ -43,9 +44,12 @@ body {
     }
     background-color: #1e293b;
 }
+.header:hover{
+ background-color: #34496b;
+}
 
 .buttomStyle:hover{
-    background-color: #f2f5fa;
+    
     background-color: #0c1119;
     cursor: pointer;
 

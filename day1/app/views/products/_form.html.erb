@@ -36,6 +36,11 @@
     <%= form.checkbox :is_active %>
   </div>
 
+   <div>
+    <%= form.label :feedback, style: "display: block" %>
+    <%= form.rich_text_area :feedback %>
+  </div>
+
   <div>
     <%= form.submit %>
   </div>

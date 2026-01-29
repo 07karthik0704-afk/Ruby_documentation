@@ -2,6 +2,13 @@
 
 <%= render @product %>
 
+<p>
+  <strong>Feedback:</strong><br>
+  
+  <%= @product&.feedback.presence || "Feedback not mentioned" %>
+
+</p>
+
 <div>
   <%= link_to "Edit this product", edit_product_path(@product) %> |
   <%= link_to "Back to products", products_path %>
