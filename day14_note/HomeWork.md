@@ -160,5 +160,155 @@ In `show.html.erb`:
 </p>
 ```
 
----
+-------------------------------------------------------------------------
+
+# Task-3 Form Helpers 
+
+## 1. `form_with` (Main Form Wrapper)
+
+Creates the `<form>` itself.
+
+``` erb
+<%= form_with model: @customer do |form| %>
+  ...
+<% end %>
+```
+
+### What it does:
+
+Rails automatically: - Sets correct action URL\
+- Chooses POST / PATCH\
+- Adds CSRF token
+
+Behind the scenes:
+
+``` html
+<form action="/customers" method="post">
+```
+
+Use this for almost all Rails forms.
+
+------------------------------------------------------------------------
+
+##  2. `form.text_field`
+
+``` erb
+<%= form.text_field :name %>
+```
+
+Generates:
+
+``` html
+<input type="text" name="customer[name]" id="customer_name">
+```
+
+Used for: - Names - Titles - Normal text
+
+------------------------------------------------------------------------
+
+##  3. `form.email_field`
+
+``` erb
+<%= form.email_field :email %>
+```
+
+Generates:
+
+``` html
+<input type="email" name="customer[email]">
+```
+
+Used for: - Emails (browser auto validation)
+
+------------------------------------------------------------------------
+
+##  4. `form.password_field`
+
+``` erb
+<%= form.password_field :password %>
+```
+
+Generates:
+
+``` html
+<input type="password" name="customer[password]">
+```
+
+Text is hidden while typing.
+
+------------------------------------------------------------------------
+
+##  5. `form.text_area`
+
+``` erb
+<%= form.text_area :description %>
+```
+
+Generates:
+
+``` html
+<textarea name="product[description]"></textarea>
+```
+
+Used for: - Feedback - Comments - Descriptions
+
+------------------------------------------------------------------------
+
+##  6. `form.number_field`
+
+``` erb
+<%= form.number_field :price %>
+```
+
+Only allows numbers.
+
+Great for: - Price - Age - Stock - Quantity
+
+------------------------------------------------------------------------
+
+##  7. `form.file_field`
+
+``` erb
+<%= form.file_field :profile_photo %>
+```
+
+Creates file upload input.
+
+Used with: - Active Storage
+
+------------------------------------------------------------------------
+
+##  8. `form.check_box`
+
+``` erb
+<%= form.check_box :is_active %>
+```
+
+Creates checkbox (true/false)
+
+Great for: - Active - Published - Verified flags
+
+------------------------------------------------------------------------
+
+##  9. `form.select`
+
+``` erb
+<%= form.select :role, ["Admin", "User", "Guest"] %>
+```
+
+Creates dropdown menu.
+
+------------------------------------------------------------------------
+
+## 10. `form.submit`
+
+``` erb
+<%= form.submit "Save" %>
+```
+
+Creates submit button.
+
+------------------------------------------------------------------------
+
+
 
