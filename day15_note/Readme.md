@@ -140,7 +140,7 @@ end
 http://localhost:3000/letter_opener
 ```
 
-You can see all sent emails there 📬
+You can see all sent emails there 
 
 ---
 
