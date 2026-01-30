@@ -9,6 +9,29 @@
 
 </p>
 
+
+
+<p>
+  <strong>Product photo:</strong><br>
+  <% if @product.product_photo.attached? %>
+    <% @product.product_photo.each do |photo| %>
+      <%= image_tag photo, alt: "product photo" ,width: "100px" ,height:"100px"%>
+    <% end %>
+<% end %>
+</p>
+
+<p>
+  <strong>Invoice:</strong><br>
+
+  <% if @product.invoice.attached? %>
+    <%= link_to "View Invoice", url_for(@product.invoice), target: "_blank" %>
+  <% else %>
+    No invoice uploaded
+  <% end %>
+</p>
+
+
+
 <div>
   <%= link_to "Edit this product", edit_product_path(@product) %> |
   <%= link_to "Back to products", products_path %>

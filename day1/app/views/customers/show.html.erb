@@ -7,6 +7,21 @@
   <%= @customer.about_me %>
 </p>
 
+<p>
+  <strong>Profile Photo:</strong><br>
+  <% if @customer.profile_photo.attached? %>
+  <%= image_tag @customer.profile_photo, alt: "Profile Picture" ,width: "100px" , height: "100px" %>
+<% end %>
+</p>
+
+<p>
+  <strong>Date of Birth:</strong>
+  <%= @customer.dob %>
+</p>
+
+
+
+
 <div>
   <%= link_to "Edit this customer", edit_customer_path(@customer) %> |
   <%= link_to "Back to customers", customers_path %>

@@ -24,9 +24,9 @@ class CustomersController < ApplicationController
   # POST /customers or /customers.json
   def create
     @customer = Customer.new(customer_params)
-
     respond_to do |format|
       if @customer.save
+        CustomerMailer.with(customer:@customer).welcome_email.deliver
         format.html { redirect_to @customer, notice: "Customer was successfully created." }
         format.json { render :show, status: :created, location: @customer }
       else
@@ -68,6 +68,6 @@ class CustomersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def customer_params
-      params.expect(customer: [ :name, :email,:about_me ])
+      params.expect(customer: [ :name, :email,:about_me ,:profile_photo,:dob])
     end
 end

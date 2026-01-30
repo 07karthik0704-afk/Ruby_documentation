@@ -42,6 +42,21 @@
   </div>
 
   <div>
+    <%= form.label :product_photo, style: "display: block" %>
+    <%= form.file_field:product_photo ,multiple:true%>
+  </div>
+
+  <div>
+  <%= form.label :invoice,style: "display: block"%>
+  <%= form.file_field :invoice %>
+</div>
+
+<div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

@@ -11,6 +11,19 @@
   <div class="one">
         <h3>Name  : <%= customer.name %></h3>
         <h3>Email : <%= customer.email %></h3>
+        <p>
+  <p>
+  
+
+  <% if customer.profile_photo.attached? %>
+    <%= image_tag customer.profile_photo,
+          alt: "Profile Picture",
+          width: "100px",
+          height: "100px" %>
+          <% else %>
+          <h3>No pic </h3>
+  <% end %>
+</p>
         <h2><%= link_to "View", customer, class:"buttomStyle" %></h2>
         </div>
 

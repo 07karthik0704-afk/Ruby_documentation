@@ -18,6 +18,28 @@
         <h3>Is Active : <span style="color: <%= product.is_active ? 'limegreen' : 'red' %>;">
         <%= product.is_active %>
         </span></h3>
+        <h3>
+  Product photo:<br>
+
+  <% if product.product_photo.attached? %>
+    <% product.product_photo.each do |photo| %>
+      <%= image_tag url_for(photo), width: "25px", height: "25px", alt: "product photo" %>
+    <% end %>
+  <% else %>
+    No photo
+  <% end %>
+</h3>
+
+<h3>
+  <strong>Invoice:</strong><br>
+
+  <% if product.invoice.attached? %>
+    <%= link_to "View Invoice", url_for(product.invoice), target: "_blank" %>
+  <% else %>
+    No invoice uploaded
+  <% end %>
+</h3>
+
         <h2><%= link_to "view", product , class: "buttomStyle" %></h2>
         </div>
 

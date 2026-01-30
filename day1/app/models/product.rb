@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
-
-  has_rich_text :feedback
+  has_one_attached:invoice
+  has_many_attached:product_photo
+  has_rich_text:feedback
 
     # def self.expensive_products
     #     Product.all.select { |p| p.price > 250 }
