@@ -164,33 +164,8 @@ In `show.html.erb`:
 
 # Task-3 Form Helpers 
 
-## 1. `form_with` (Main Form Wrapper)
 
-Creates the `<form>` itself.
-
-``` erb
-<%= form_with model: @customer do |form| %>
-  ...
-<% end %>
-```
-
-### What it does:
-
-Rails automatically: - Sets correct action URL\
-- Chooses POST / PATCH\
-- Adds CSRF token
-
-Behind the scenes:
-
-``` html
-<form action="/customers" method="post">
-```
-
-Use this for almost all Rails forms.
-
-------------------------------------------------------------------------
-
-##  2. `form.text_field`
+##  1. `form.text_field`
 
 ``` erb
 <%= form.text_field :name %>
@@ -206,7 +181,7 @@ Used for: - Names - Titles - Normal text
 
 ------------------------------------------------------------------------
 
-##  3. `form.email_field`
+##  2. `form.email_field`
 
 ``` erb
 <%= form.email_field :email %>
@@ -222,7 +197,7 @@ Used for: - Emails (browser auto validation)
 
 ------------------------------------------------------------------------
 
-##  4. `form.password_field`
+##  3. `form.password_field`
 
 ``` erb
 <%= form.password_field :password %>
@@ -238,7 +213,7 @@ Text is hidden while typing.
 
 ------------------------------------------------------------------------
 
-##  5. `form.text_area`
+##  4. `form.text_area`
 
 ``` erb
 <%= form.text_area :description %>
@@ -254,7 +229,7 @@ Used for: - Feedback - Comments - Descriptions
 
 ------------------------------------------------------------------------
 
-##  6. `form.number_field`
+##  5. `form.number_field`
 
 ``` erb
 <%= form.number_field :price %>
@@ -266,7 +241,7 @@ Great for: - Price - Age - Stock - Quantity
 
 ------------------------------------------------------------------------
 
-##  7. `form.file_field`
+##  6. `form.file_field`
 
 ``` erb
 <%= form.file_field :profile_photo %>
@@ -278,7 +253,7 @@ Used with: - Active Storage
 
 ------------------------------------------------------------------------
 
-##  8. `form.check_box`
+##  7. `form.check_box`
 
 ``` erb
 <%= form.check_box :is_active %>
@@ -290,7 +265,7 @@ Great for: - Active - Published - Verified flags
 
 ------------------------------------------------------------------------
 
-##  9. `form.select`
+##  8. `form.select`
 
 ``` erb
 <%= form.select :role, ["Admin", "User", "Guest"] %>
@@ -300,7 +275,7 @@ Creates dropdown menu.
 
 ------------------------------------------------------------------------
 
-## 10. `form.submit`
+## 9. `form.submit`
 
 ``` erb
 <%= form.submit "Save" %>
