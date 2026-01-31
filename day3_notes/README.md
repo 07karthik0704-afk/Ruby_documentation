@@ -1,117 +1,179 @@
-Day 3-Rails Folder Structure & MVC Architecture
------------------------------------------------
+# Rails ERB, Routes, and Naming Conventions --- Beginner Notes
 
-1-Introduction to MVC Architecture
+This file explains:
 
-Rails follows the MVC design pattern.
-MVC stands for:
-Model – View – Controller
+-   ERB syntax in Rails views\
+-   resources vs resource in routes\
+-   Convention over Configuration in Rails
 
-It separates database logic, user interface, and request handling.
---------------------------------------------------------------------
-
-2-Role of Each MVC Component
-
-Model
-Handles database operations
-Contains business logic
-Represents tables
-
-View
-Displays UI to users
-Uses HTML and ERB
-
-Controller
-Handles requests
-Communicates with model
-Sends data to views
 ------------------------------------------------------------------------
 
-3-MVC Request Flow
+## 1. ERB in Rails Views
 
-User sends request
-Controller receives it
-Controller calls Model
-Model fetches data
-Controller sends data to View
-View shows response to user
+Rails view files end with:
 
-Simple MVC Flow:
-User -> Controller -> Model -> Controller -> View -> User
+.html.erb
+
+This means HTML + Ruby together.
+
 ------------------------------------------------------------------------
 
-4-Important Rails Features
+### \<% %\> → Run Ruby logic (NO output)
 
-Convention Over Configuration
-Rails uses naming rules instead of manual setup.
+Used for:
+
+-   loops\
+-   conditions\
+-   control flow
+
 Example:
-rails generate scaffold Customer name:string email:string
 
+``` erb
+<% @students.each do |student| %>
+<% end %>
+```
 
-Rails automatically assumes:
+Example:
 
-Model ->Customer (singular class name)
-Controller -> CustomersController (plural)
-Table -> customers (plural in DB)
-Views folder -> views/customers/
-Routes -> /customers
-That automatic mapping = Convention Over Configuration
+``` erb
+<% if student.age > 18 %>
+<% end %>
+```
 
-Syntactic Sugar
-Rails provides short and simple commands to generate large amounts of code automatically (like scaffold).
-This makes development faster and easier.
 ------------------------------------------------------------------------
 
-5-Rails Project Folder Structure
+### \<%= %\> → Run Ruby AND print result
 
-When a Rails project is created, many folders are generated automatically.Each folder has a specific responsibility.
+Used when something should appear on the page.
 
-app/ (Main application code – MVC)
-Contains:
-models -> database logic & business rules
-controllers -> handle requests and responses
-views -> UI files (HTML + ERB)
-helpers -> methods used in views
+Example:
 
-config/ (Application configuration)
-Important files:
-routes.rb -> maps URLs to controllers and actions
-database.yml -> database connection settings
-application.rb -> main app configuration
-environment.rb -> app startup file
+``` erb
+<%= student.name %>
+<%= student.age %>
+<%= notice %>
+```
 
-db/ (Database related files)
-Contains:
-migrate/ -> migration files (table structure changes)
-schema.rb -> current database structure (auto-generated)
-seeds.rb -> sample/default data
+------------------------------------------------------------------------
 
-bin/
-Contains Rails command scripts.
+### Golden Rule
 
-public/
-Static files like:
-images
-error pages (404, 500)
+Print → \<%= %\>\
+Logic → \<% %\>
+
+------------------------------------------------------------------------
+
+### Loop Example
+
+``` erb
+<% @students.each do |student| %>
+  <p><%= student.name %></p>
+<% end %>
+```
+
+------------------------------------------------------------------------
+
+### If / Else Example
+
+``` erb
+<% if student.age >= 18 %>
+  <p>Adult</p>
+<% else %>
+  <p>Minor</p>
+<% end %>
+```
+
+------------------------------------------------------------------------
+
+### Common Mistake
+
+Wrong:
+
+``` erb
+<% student.name %>
+```
+
+Correct:
+
+``` erb
+<%= student.name %>
+```
+
+------------------------------------------------------------------------
+
+## 2. resources vs resource
+
+Used inside config/routes.rb
+
+------------------------------------------------------------------------
+
+### resources (normal CRUD)
+
+``` ruby
+resources :students
+```
+
+Creates:
+
+/students\
+/students/1\
+/students/new\
+/students/1/edit
+
+Used in most apps.
+
+------------------------------------------------------------------------
+
+### resource (single object)
+
+``` ruby
+resource :profile
+```
+
+Creates:
+
+/profile\
+/profile/edit
+
+No ID in URL.
+
+------------------------------------------------------------------------
+
+### Easy Rule
+
+ID in URL → resources\
+No ID → resource
+
+------------------------------------------------------------------------
+
+## 3. Convention Over Configuration
+
+You ran:
+
+``` bash
+rails g scaffold Student
+```
+
+Rails automatically created:
+
+Model: student.rb
+
+Table: students
+
+Controller: students_controller.rb
+
+Views: views/students/
+
+------------------------------------------------------------------------
+
+### Rails naming rules
+
+Model → singular\
+Table → plural\
+Controller → plural\
+Views → plural
+
+------------------------------------------------------------------------
 
 
-log/
-Stores application logs (used for debugging).
-
-tmp/
-Temporary files and cache.
-
-test/
-Testing files for the application.
-
-vendor/
-Third-party libraries and external code.
-
-Important root files:
-Gemfile -> list of gems (libraries)
-Gemfile.lock -> exact installed versions
-.gitignore -> files Git should ignore
-README.md -> project documentation
-Rakefile -> automation tasks
--------------------------------------------------------------------------
-
+Rails connects everything automatically if naming rules are followed.
