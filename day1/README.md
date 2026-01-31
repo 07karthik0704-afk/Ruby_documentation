@@ -171,7 +171,7 @@ Browser → Controller → Model → Controller → View → Browser
 
 ---
 
-# ⚙ COMMANDS
+#  COMMANDS
 
 ##  bin/
 - Runs Rails commands
@@ -209,7 +209,7 @@ Also contains:
 
 ---
 
-# 🗄 DATABASE
+#  DATABASE
 
 ##  db/
 
