@@ -1,32 +1,36 @@
-Day 2 – PostgreSQL, Scaffold & Rails Console
---------------------------------------------
+# Day 2 --- Ruby on Rails Setup with PostgreSQL and Scaffold
 
-1-Introduction to PostgreSQL in Rails
-PostgreSQL is a powerful relational database commonly used with Rails in real-world projects.
+This day covered creating a Rails project using PostgreSQL, configuring
+the database, generating a scaffold, running migrations, and starting
+the Rails server.
 
-Rails can be configured to use PostgreSQL while creating a new project.
----------------------------------------------
+------------------------------------------------------------------------
 
-2-Creating a Rails Project with PostgreSQL
+## Step 1: Create Rails App with PostgreSQL
 
-To create a Rails app using PostgreSQL:
-->rails new project_name -d postgresql
-The -d postgresql option sets PostgreSQL as the database.
-----------------------------------------------
+rails new app-d postgresql
 
-3-database.yml Configuration File
+### What this does:
 
-Location:
+-   Creates a new Rails project named `app-d`
+-   Uses PostgreSQL instead of default SQLite
+-   Adds PostgreSQL gem to Gemfile
+-   Prepares database configuration in `config/database.yml`
+
+------------------------------------------------------------------------
+
+## Step 2: Configure Database Connection
+
+File edited:
+
 config/database.yml
 
-This file contains:
-database name
-username
-password
-host
-If any configuration is wrong, database creation will fail.
+### Purpose:
 
-code:
+Connects Rails app to PostgreSQL using database name, username, and
+password.
+
+## code : 
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -35,69 +39,51 @@ default: &default
   username: postgres
   password: root
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
---------------------------------------------------------
 
-4-Creating the Database
+------------------------------------------------------------------------
+
+## Step 3: Create the Database
+
 rails db:create
-Creates the PostgreSQL database for the project.
----------------------------------------------------------
 
-5-Understanding Scaffold
+Creates development and test databases.
 
-Scaffold is a Rails feature that automatically generates a complete CRUD structure.
+------------------------------------------------------------------------
 
-It creates:
+## Step 4: Generate Scaffold
 
-Model
-Controller
-Views
-Routes
-Migration file
+rails g scaffold Student name:String age:integer
 
-CRUD = Create, Read, Update, Delete
------------------------------------------------------------
+Creates: - Model - Migration - Controller - Views - Routes
 
-6-Generating Scaffold
+------------------------------------------------------------------------
 
-->rails generate scaffold Customer name:string email:string
------------------------------------------------------------
+## Step 5: Run Migration
 
-7-Migrating the Database
 rails db:migrate
 
+Creates students table in the database.
 
-Migration applies database changes and creates tables.
+------------------------------------------------------------------------
 
-Important flow:
+## Step 6: Start Rails Server
 
-Scaffold → creates migration file
-Migrate → creates actual table in database
------------------------------------------------------------
+rails s\
+rails s -p 5031
 
-8-Seeding Data
-rails db:seed
+------------------------------------------------------------------------
 
+## Stop Server
 
-Adds default/sample data into the database.
-
-Correct order:
-
-db:create → db:migrate → db:seed
-
-(if we are inserting values into the seed then we need to use the above command)
-----------------------------------------------------------
-
-9-Running Rails Server
-
-rails server
-or
-rails s
-
-
-Different port:
-rails s -p 4000
-
-
-Stoping the server:
 Ctrl + C
------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+## Workflow Summary
+
+rails new\
+edit database.yml\
+rails db:create\
+rails g scaffold\
+rails db:migrate\
+rails s
