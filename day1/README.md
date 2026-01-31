@@ -90,9 +90,9 @@ Ruby is the language. Rails is the framework that makes building web apps faster
 Rails handles most setup automatically so we can focus on writing the logic instead of configuration.
 
 
------------------------------------------------------------# Ruby_documentation
+-------------------------------------------------------------
 
-#  Ruby on Rails Project Structure — Complete Beginner Notes
+#  Ruby on Rails Project Structure 
 
 When we run:
 
@@ -171,7 +171,7 @@ Browser → Controller → Model → Controller → View → Browser
 
 ---
 
-# ⚙ COMMANDS
+#  COMMANDS
 
 ##  bin/
 - Runs Rails commands
@@ -209,7 +209,7 @@ Also contains:
 
 ---
 
-# 🗄 DATABASE
+#  DATABASE
 
 ##  db/
 
