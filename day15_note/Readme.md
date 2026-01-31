@@ -1,4 +1,4 @@
-# 📧 Rails Action Mailer with Letter Opener – Step‑by‑Step Notes
+#  Rails Action Mailer with Letter Opener – Step‑by‑Step Notes
 
 These are the steps you followed to send emails in Rails using **Action Mailer** and preview them in the browser using **Letter Opener**.
 
@@ -140,7 +140,7 @@ end
 http://localhost:3000/letter_opener
 ```
 
-You can see all sent emails there 📬
+You can see all sent emails there 
 
 ---
 
