@@ -1,7 +1,8 @@
 # Action Mailbox Setup (Rails 6+)
 
-This document walks through setting up and testing Action Mailbox in
-Rails for receiving inbound emails.
+This guide explains how to configure Action Mailbox in Rails to receive,
+store, route, and process inbound emails --- including why each step is
+required.
 
 ------------------------------------------------------------------------
 
@@ -13,11 +14,13 @@ Rails for receiving inbound emails.
 rails action_mailbox:install
 ```
 
-This generates:
+What this does:
 
--   migrations\
--   ApplicationMailbox\
--   configuration files
+-   Adds database migrations to store incoming emails\
+-   Creates ApplicationMailbox (email router)\
+-   Adds configuration files
+
+Without this step, Rails cannot receive inbound emails.
 
 ------------------------------------------------------------------------
 
@@ -27,44 +30,64 @@ This generates:
 rails db:migrate
 ```
 
-Creates tables for storing inbound emails.
+What this does:
+
+-   Creates tables like action_mailbox_inbound_emails\
+-   Stores raw emails and attachments
+
+This is where every incoming email is saved.
 
 ------------------------------------------------------------------------
 
 ### 3. Configure development email preview
 
-**config/environments/development.rb**
+config/environments/development.rb
 
 ``` ruby
 config.action_mailer.perform_deliveries = true
 config.action_mailer.delivery_method = :letter_opener
 ```
 
-(Optional --- for viewing outgoing mail locally)
+What this does:
+
+-   Sends emails locally\
+-   Opens them in browser
+
+Used only for development testing.
 
 ------------------------------------------------------------------------
 
 ### 4. Configure ingress
 
-**config/environments/production.rb** (or dev for testing)
+config/environments/production.rb (or dev)
 
 ``` ruby
 config.action_mailbox.ingress = :any_ingress_server
 ```
 
-Allows Rails to receive inbound emails.
+What this does:
+
+-   Enables receiving inbound emails\
+-   Uses built-in server for testing
+
+Production uses real providers.
 
 ------------------------------------------------------------------------
 
 ### 5. Route emails
 
-**app/mailboxes/application_mailbox.rb**
+app/mailboxes/application_mailbox.rb
 
 ``` ruby
 class ApplicationMailbox < ActionMailbox::Base
   routing all: :support
 end
 ```
+
+What this does:
+
+-   Routes all emails to SupportMailbox\
+-   Works like Rails routes for emails
 
 ------------------------------------------------------------------------
 
@@ -73,6 +96,11 @@ end
 ``` bash
 rails g mailbox support
 ```
+
+What this does:
+
+-   Creates SupportMailbox class\
+-   Where email logic lives
 
 ------------------------------------------------------------------------
 
@@ -88,6 +116,11 @@ class SupportMailbox < ApplicationMailbox
 end
 ```
 
+What this does:
+
+-   Extracts email content\
+-   Lets you save into models
+
 ------------------------------------------------------------------------
 
 ##  Testing
@@ -95,6 +128,8 @@ end
 Open:
 
 http://localhost:3000/rails/conductor/action_mailbox/inbound_emails
+
+Used to simulate incoming emails.
 
 ------------------------------------------------------------------------
 
@@ -106,11 +141,10 @@ action_mailbox_inbound_emails
 
 ------------------------------------------------------------------------
 
-##  Summary
+##  Summary Flow
 
-✔ Installed\
-✔ Routed\
-✔ Processed\
-✔ Stored
-
-
+Email arrives\
+Rails stores it\
+Routes it\
+Processes it\
+App uses it
