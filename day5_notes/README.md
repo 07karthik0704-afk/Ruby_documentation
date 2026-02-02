@@ -1,107 +1,200 @@
-Day 5 – Ruby Methods, Type Casting & Product Scaffold
------------------------------------------------------
+# Day 5 -- Ruby Methods, Type Casting & Product Scaffold
 
-1- Ruby Methods
+------------------------------------------------------------------------
 
-Ruby methods automatically return the last evaluated expression.
-Using return is optional.
+## 1. Ruby Methods
 
-Example:
+Ruby methods automatically return the last evaluated expression.\
+Using `return` is optional.
 
+### Example:
+
+``` ruby
 def add(a, b)
   a + b   # returned automatically
 end
---------------------------------------------------------
+```
 
-2-Comments in Ruby
+------------------------------------------------------------------------
 
-Single-line comment:
+## 2. Comments in Ruby
+
+### Single-line comment:
+
+``` ruby
 # This is a comment
+```
 
-Multi-line comment:
+### Multi-line comment:
+
+``` ruby
 =begin
 This is a multi-line comment
 =end
+```
 
-Used to explain code and disable execution.
-----------------------------------------------------------
+### Purpose:
 
-3-User input
+-   Explain code\
+-   Temporarily disable execution
 
-gets gets the input with the newline ("\n")
-chomp removes that newline
+------------------------------------------------------------------------
 
-Ruby does:
+## 3. User Input in Ruby
+
+`gets` takes input including newline (`\n`)\
+`chomp` removes the newline
+
+### Example:
+
+``` ruby
 gets
 # => "kar\n"
 
-Then:
 gets.chomp
 # => "kar"
+```
 
-User input is always a String.
+### Important:
 
-Ruby does not convert types automatically — we must convert manually.
+User input is always a **String**.
 
-Common conversions:
-"10".to_i -> String to Integer
-"10.5".to_f -> String to Float
-10.to_s -> Integer to String
+Ruby does NOT convert automatically --- manual conversion is required.
 
-Used mainly with gets.chomp.
-----------------------------------------------------------
+### Common conversions:
 
-4-Product Scaffold in Rails
+``` ruby
+"10".to_i    # String to Integer
+"10.5".to_f  # String to Float
+10.to_s     # Integer to String
+```
+
+Mostly used with:
+
+``` ruby
+gets.chomp
+```
+
+------------------------------------------------------------------------
+
+## 4. Product Scaffold in Rails
+
+``` bash
 rails db:create
 
 rails generate scaffold Product name:string description:text price:decimal stock:integer is_active:boolean
+```
 
-generate scaffold = write the blueprint
-db:migrate = build the actual table
-------------------------------------------------------------
+### Meaning:
 
-5-Ways to Insert Data into Database
+-   `generate scaffold` → creates blueprint (model, controller, views,
+    migration)
+-   `db:migrate` → builds the actual database table
 
---1.Using Rails UI forms
---2.Using SQL manually (DBeaver / pgAdmin)
---3.using seeds file
-     --- 1. rb.seed
-     step1:go to seed file
-     step2:
-    Product.create!(
-    name: "Jana nayagan",
-    description: "Not yet came due to the censor issue",
-    price: 500,
-    stock: 10,
-    is_active: true)
-    used to create the rows
-     step3:in the terminal run the rails db:seed
---4.rails console
-       we can do it in there by using the same comment
---5.faker
-    1->go to the gemfile
-    2->gem "faker"
-    3->bundle install
-    4->inside the seeds.rb
+------------------------------------------------------------------------
 
-  10.times do
+## 5. Ways to Insert Data into Database
+
+### 1. Using Rails UI forms
+
+### 2. Using SQL manually
+
+(DBeaver / pgAdmin)
+
+### 3. Using seeds file
+
+File:
+
+``` ruby
+db/seeds.rb
+```
+
+Example:
+
+``` ruby
+Product.create!(
+  name: "Jana nayagan",
+  description: "Not yet came due to the censor issue",
+  price: 500,
+  stock: 10,
+  is_active: true
+)
+```
+
+Run:
+
+``` bash
+rails db:seed
+```
+
+------------------------------------------------------------------------
+
+### 4. Using Rails console
+
+Same `create!` commands can be run inside:
+
+``` bash
+rails console
+```
+
+------------------------------------------------------------------------
+
+### 5. Using Faker gem
+
+#### Steps:
+
+1.  Open Gemfile\
+2.  Add:
+
+``` ruby
+gem "faker"
+```
+
+3.  Run:
+
+``` bash
+bundle install
+```
+
+4.  Inside `seeds.rb`:
+
+``` ruby
+10.times do
   Customer.create!(
     name: Faker::Name.name,
     email: Faker::Internet.unique.email
   )
-  end
---------------------------------------------------
+end
+```
 
-6-gem commands
+------------------------------------------------------------------------
 
+## 6. Gem Commands
+
+``` bash
 gem list
+```
+
 Shows all installed gems.
 
+``` bash
 gem list faker
-Checks if Faker gem is installed.
+```
 
+Checks if Faker is installed.
+
+``` bash
 gem info faker
-Shows details about the Faker gem.
+```
 
-Gems can also be viewed on GitHub to read documentation and source code.
+Shows gem details.
+
+------------------------------------------------------------------------
+
+## Notes
+
+-   Gems can be explored on GitHub for documentation and source code\
+-   Scaffold speeds up CRUD development\
+-   Faker is used for generating fake test data
+
 ------------------------------------------------------------------------

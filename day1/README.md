@@ -9,6 +9,8 @@ Everything in Ruby is an object
 
 Known for simplicity and productivity
 
+StandAlone programing language
+
 Current stable version: Ruby 3+
 ------------------------------------------------------
 
