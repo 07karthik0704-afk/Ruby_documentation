@@ -43,7 +43,9 @@ rails g migration AddRatingToProducts rating:integer
 ---------------------------------------------------------
 
 task5-
-if we create controller the  n views genertate auto
+controller + view + routes will be genearted
+
+rails g controller Products index show
 
 
 

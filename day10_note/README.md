@@ -4,6 +4,7 @@ Day-10 Rails Scopes + Controller + Routes
 1-Create Scope in Model (Product)
 
 Create Scope in Model (Product)
+->  scope :whitelisted_products, -> { where("stock <= ?", 25) }
 
 What this does:
 
@@ -33,12 +34,27 @@ end
 
 3-Add Route for this custom page
 
-Code:
+products.rb:
+class Product < ApplicationRecord
+    scope :whitelisted_products, -> { where("stock <= ?", 25) }
+end
+
+contoller:
+def whitelisted_products
+  @products = Product.whitelisted_products
+end
+
+ruotes:
 resources :products do
   collection do
     get 'whitelisted_products'
   end
 end
+
+html:
+add an another page
+
+and in the routes u only need to mention the products once 
 
 Meaning:
 Rails creates URL:
