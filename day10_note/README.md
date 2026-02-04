@@ -34,6 +34,11 @@ end
 
 3-Add Route for this custom page
 
+products.rb:
+class Product < ApplicationRecord
+    scope :whitelisted_products, -> { where("stock <= ?", 25) }
+end
+
 contoller:
 def whitelisted_products
   @products = Product.whitelisted_products
@@ -45,6 +50,11 @@ resources :products do
     get 'whitelisted_products'
   end
 end
+
+html:
+add an another page
+
+and in the routes u only need to mention the products once 
 
 Meaning:
 Rails creates URL:
