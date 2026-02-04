@@ -4,6 +4,7 @@ Day-10 Rails Scopes + Controller + Routes
 1-Create Scope in Model (Product)
 
 Create Scope in Model (Product)
+->  scope :whitelisted_products, -> { where("stock <= ?", 25) }
 
 What this does:
 
