@@ -34,7 +34,12 @@ end
 
 3-Add Route for this custom page
 
-Code:
+contoller:
+def whitelisted_products
+  @products = Product.whitelisted_products
+end
+
+ruotes:
 resources :products do
   collection do
     get 'whitelisted_products'
