@@ -60,8 +60,11 @@ Vendor.create(name: "Shop A", location: "NY", user_id: 3)
 ## Step 8 -- Test
 
 Vendor.last
+
 Vendor.last.user
+
 User.last.create_vendor()
+
 User.find(6).create_vendor()
 
 ------------------------------------------------------------------------
