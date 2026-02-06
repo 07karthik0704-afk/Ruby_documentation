@@ -59,23 +59,23 @@ or
 ## Step 7 -- Add associations
 
 ### tag.rb
-```bash
-class Tag \< ApplicationRecord
+```ruby
+class Tag < ApplicationRecord
   has_and_belongs_to_many :products
 end
 ```
 ### product.rb
 
-```bash
-class Product \< ApplicationRecord 
+```ruby
+class Product < ApplicationRecord 
 has_and_belongs_to_many :tags
 end
 ```
 
 ### Products_tags
 
-```bash
-class ProductsOffer /< ApplicationRecord
+```ruby
+class ProductsOffer < ApplicationRecord
 
   belongs_to :product
 
@@ -88,7 +88,7 @@ end
 
 ## Step 8 -- Fetch tag names for a Product
 
-```bash
+```ruby
 pro1 = Product.last
 
 pro1.tags.pluck(:name)
@@ -147,8 +147,8 @@ rails db:migrate
 
 ### offer.rb
 
-```bash
-class Offer \< ApplicationRecord 
+```ruby
+class Offer < ApplicationRecord 
 has_many :products_offers 
 has_many :products, through: :products_offers
 end
@@ -157,8 +157,8 @@ end
 
 ### product.rb
 
-```bash
-class Product \< ApplicationRecord 
+```ruby
+class Product < ApplicationRecord 
 has_many :products_offers 
 has_many:offers, through: :products_offers 
 end
@@ -168,7 +168,7 @@ end
 
 ### products_offer.rb
 
-```bash
+```ruby
 class ProductsOffer \< ApplicationRecord 
 belongs_to :product 
 belongs_to:offer 
@@ -176,11 +176,12 @@ end
 ````
 ------------------------------------------------------------------------
 
-## Step 6 -- Use in Rails console
+## Step 6 -- Use in Rails console (Full cconept will teach in monday)
 
 rails c
 
 offer = Offer.create(name: "Summer Sale", status: true, discount: 20)
+
 product = Product.last
 
 product.offers \<\< offer
@@ -278,6 +279,8 @@ Result:
 User → Profile\
 Post → Comments\
 
+in the insta we need to delete the user it will be useful
+or the comments
 
 ------------------------------------------------------------------------
 
