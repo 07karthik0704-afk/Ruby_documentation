@@ -100,13 +100,13 @@ These methods return records based on their position in the table
 Product::Category.first
 ```
 
-➡ Returns first record → Phones (id 1)
+ Returns first record → Phones (id 1)
 
 ``` ruby
 Product::Category.second
 ```
 
-➡ Returns second record → Laptops (id 2)
+ Returns second record → Laptops (id 2)
 
 ``` ruby
 Product::Category.third
@@ -118,19 +118,19 @@ Product::Category.third
 Product::Category.fourth
 ```
 
-➡ Returns fourth record → Cameras (id 4)
+ Returns fourth record → Cameras (id 4)
 
 ``` ruby
 Product::Category.fifth
 ```
 
-➡ Returns fifth record → Tablets (id 5)
+ Returns fifth record → Tablets (id 5)
 
 ``` ruby
 Product::Category.last
 ```
 
-➡ Returns last record → Watches (highest id)
+ Returns last record → Watches (highest id)
 
 ------------------------------------------------------------------------
 
