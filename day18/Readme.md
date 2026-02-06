@@ -30,7 +30,7 @@ Date.new(2027,03,15).end_of_month
 
 ------------------------------------------------------------------------
 
-### 🧶 String Helpers
+###  String Helpers
 
 ``` ruby
 product = "smart tv feb 22"
@@ -47,7 +47,7 @@ text.present?
 
 ------------------------------------------------------------------------
 
-### 📦 Presence Checks
+###  Presence Checks
 
 ``` ruby
 items = []
@@ -59,7 +59,7 @@ items.present?
 
 ------------------------------------------------------------------------
 
-### 🚫 Nil Handling
+###  Nil Handling
 
 ``` ruby
 nil.present?
