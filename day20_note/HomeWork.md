@@ -44,9 +44,10 @@ Only this pattern triggers join table creation.
 ------------------------------------------------------------------------
 
 ##  Comparison
-
+```bash
   Name                           Result
   ------------------------------ --------
   CreateJoinTableProductsTags    Auto
   CreateJoinsTableProductsTags   Manual
+```
   
